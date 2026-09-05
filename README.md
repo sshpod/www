@@ -75,12 +75,19 @@ magick assets/sshpod.png /tmp/mask.png -alpha off -compose CopyOpacity -composit
 
 ## Deployment
 
-`.github/workflows/deploy.yml` builds and publishes to GitHub Pages on every push
-to `main`. Two one-time settings live outside this repo:
+The site is deployed with **Cloudflare Pages**, connected to this repository.
+Build settings:
 
-1. Repository **Settings → Pages → Source** must be set to **GitHub Actions**.
-2. DNS for `www.sshpod.com` must point at GitHub Pages; `docs/public/CNAME` carries
-   the custom domain into the build output.
+| Setting | Value |
+| --- | --- |
+| Framework preset | None (or VitePress) |
+| Build command | `npm run build` |
+| Build output directory | `docs/.vitepress/dist` |
+| Root directory | `/` |
 
-`docs/public/_headers` is kept for Cloudflare Pages / Netlify compatibility if
-hosting ever moves.
+`.node-version` pins Node 20 for the Cloudflare build image. The custom domain
+`www.sshpod.com` is set in the Cloudflare Pages project, not in this repo.
+
+`docs/public/_headers` is picked up by Cloudflare Pages and sets
+`X-Content-Type-Options`, `X-Frame-Options`, and `Referrer-Policy` on every
+response.

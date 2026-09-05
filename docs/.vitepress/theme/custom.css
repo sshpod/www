@@ -1,0 +1,150 @@
+:root {
+  --vp-c-brand-1: #0B6FD1;
+  --vp-c-brand-2: #0084F7;
+  --vp-c-brand-3: #0A5AA8;
+  --vp-c-brand-soft: #E4F0FD;
+  --vp-c-bg-soft: #ffffff;
+  --vp-c-text-1: #162033;
+  --vp-c-text-2: #4f627f;
+  --vp-home-hero-name-color: #0f172a;
+  --vp-home-hero-name-background: none;
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-bg: #0B6FD1;
+  --vp-button-brand-hover-bg: #0A5AA8;
+}
+
+html.dark {
+  --vp-c-brand-1: #6FB6FF;
+  --vp-c-brand-2: #9BCBFF;
+  --vp-c-brand-3: #3C97F0;
+  --vp-c-brand-soft: #0F2B47;
+  --vp-c-bg-soft: #0f1724;
+  --vp-c-text-1: #edf4ff;
+  --vp-c-text-2: #b1c1db;
+  --vp-home-hero-name-color: #eff6ff;
+  --vp-home-hero-name-background: none;
+}
+
+body { background: #ffffff; }
+html.dark body { background: #0b1220; }
+
+.VPNav { background: #ffffff; }
+html.dark .VPNav { background: #0b1220; }
+
+.VPNavBar { border-bottom: 1px solid rgba(11, 111, 209, 0.12); }
+
+.VPNavBarTitle .logo {
+  height: 32px;
+  width: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+  transform: translateY(4px);
+}
+
+.VPHero .image { max-width: 420px; }
+.VPHero .image-bg { display: none; }
+
+.VPHero .name,
+.VPHero .text { color: var(--vp-home-hero-name-color) !important; }
+.VPHero .name.clip {
+  background: none !important;
+  -webkit-text-fill-color: var(--vp-home-hero-name-color) !important;
+  color: var(--vp-home-hero-name-color) !important;
+}
+.VPHero .tagline {
+  max-width: 34rem;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+}
+
+.hero-brand { width: min(100%, 400px); margin: 0 auto; padding: 1rem 0; }
+.hero-logo { display: block; width: min(100%, 220px); margin: 0 auto 1.75rem; }
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+.hero-badges a { line-height: 0; }
+.hero-badges img { display: block; }
+
+.VPHero .actions { gap: 0.85rem; }
+.VPHero .action { transform: translateZ(0); }
+
+.VPButton { border-radius: 999px !important; padding-inline: 1.1rem !important; }
+.VPButton.brand { color: #f8fbff !important; }
+.VPButton.alt { border-color: #E3CFB3 !important; background: #ffffff !important; }
+html.dark .VPButton.alt { background: #0f1724 !important; border-color: #3A2E1E !important; }
+
+.VPFeature { border: 1px solid #EADCC6; background: var(--vp-c-bg-soft); }
+html.dark .VPFeature { border-color: #3A2E1E; background: var(--vp-c-bg-soft); }
+
+/* Mermaid diagrams render as inline SVG. The plugin forces mermaid's own
+   "dark" theme in dark mode, so repaint both themes from the site palette
+   instead of inheriting two different grey scales. */
+.mermaid { overflow-x: auto; }
+.mermaid svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+
+.mermaid svg .node rect,
+.mermaid svg .node polygon,
+.mermaid svg .node circle,
+.mermaid svg .node path {
+  fill: var(--vp-c-bg-soft) !important;
+  stroke: var(--vp-c-brand-1) !important;
+  stroke-width: 1.4px !important;
+}
+.mermaid svg .node .label,
+.mermaid svg .nodeLabel,
+.mermaid svg .nodeLabel * {
+  fill: var(--vp-c-text-1) !important;
+  color: var(--vp-c-text-1) !important;
+}
+.mermaid svg .edgePath path,
+.mermaid svg .flowchart-link {
+  stroke: var(--vp-c-text-2) !important;
+}
+.mermaid svg marker path,
+.mermaid svg .arrowheadPath {
+  fill: var(--vp-c-text-2) !important;
+  stroke: none !important;
+}
+.mermaid svg .edgeLabel,
+.mermaid svg .edgeLabel rect,
+.mermaid svg .edgeLabel foreignObject div {
+  fill: var(--vp-c-bg) !important;
+  background: var(--vp-c-bg) !important;
+}
+.mermaid svg .edgeLabel .edgeLabel,
+.mermaid svg .edgeLabel text,
+.mermaid svg .edgeLabel tspan {
+  fill: var(--vp-c-text-2) !important;
+  color: var(--vp-c-text-2) !important;
+}
+
+@media (min-width: 960px) {
+  .VPHero.has-image .container { align-items: center; }
+  .VPHero.has-image .main { max-width: 560px; }
+  .VPHero.has-image .image { display: flex; justify-content: flex-end; }
+}
+@media (max-width: 959px) {
+  .hero-brand { margin-bottom: 5rem; }
+  .VPHero .main { margin-top: 3rem; }
+}
+@media (max-width: 640px) {
+  .hero-brand { padding-top: 0.75rem; margin-bottom: 7rem; }
+  .VPHero .main { margin-top: 4rem; }
+  .hero-logo { width: min(100%, 190px); }
+}
+
+/* Roadmap checklists (markdown-it-task-lists) */
+.vp-doc .task-list-item { list-style: none; }
+.vp-doc .contains-task-list { padding-left: 0.2rem; }
+.vp-doc .task-list-item-checkbox {
+  margin-right: 0.55rem;
+  accent-color: var(--vp-c-brand-1);
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
